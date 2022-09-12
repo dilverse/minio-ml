@@ -1,0 +1,6 @@
+pandas
+matplotlib
+papermill
+transformers
+s3fs
+tf-models-official
