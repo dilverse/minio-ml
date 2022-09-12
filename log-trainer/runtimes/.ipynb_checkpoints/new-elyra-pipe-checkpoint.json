@@ -1,0 +1,22 @@
+{
+    "name": "new-elyra-pipe",
+    "display_name": "new-elyra-pipe",
+    "metadata": {
+        "tags": [],
+        "display_name": "new-elyra-pipe",
+        "engine": "Argo",
+        "auth_type": "DEX_STATIC_PASSWORDS",
+        "api_endpoint": "https://kubeflow.kind-1.dc.min.dev/pipeline",
+        "user_namespace": "kubeflow-user-example-com",
+        "api_username": "user@example.com",
+        "api_password": "12341234",
+        "cos_auth_type": "USER_CREDENTIALS",
+        "cos_endpoint": "https://ns-1.m.dc.min.dev",
+        "cos_bucket": "ml-data",
+        "cos_username": "console",
+        "cos_password": "console123",
+        "runtime_type": "KUBEFLOW_PIPELINES"
+    },
+    "schema_name": "kfp",
+    "resource": "new-elyra-pipe.json"
+}

@@ -29,11 +29,11 @@
               "mounted_volumes": [],
               "runtime_image": "tensorflow/tensorflow:2.8.0"
             },
-            "label": "",
+            "label": "Preprocess",
             "ui_data": {
-              "label": "minio-logs-data-processing.ipynb",
-              "image": "/static/elyra/notebook.svg",
-              "x_pos": 128,
+              "label": "Preprocess",
+              "image": "/notebook/kubeflow-user-example-com/ml-lab/static/elyra/notebook.svg",
+              "x_pos": 127,
               "y_pos": 114,
               "description": "Run notebook file"
             }
@@ -88,10 +88,10 @@
               "mounted_volumes": [],
               "runtime_image": "tensorflow/tensorflow:2.8.0"
             },
-            "label": "",
+            "label": "Train",
             "ui_data": {
-              "label": "minio-train-model.ipynb",
-              "image": "/static/elyra/notebook.svg",
+              "label": "Train",
+              "image": "/notebook/kubeflow-user-example-com/ml-lab/static/elyra/notebook.svg",
               "x_pos": 461,
               "y_pos": 158,
               "description": "Run notebook file"
