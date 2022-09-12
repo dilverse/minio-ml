@@ -1,0 +1,22 @@
+{
+    "name": "new-elyra-pipe",
+    "display_name": "new-elyra-pipe",
+    "metadata": {
+        "tags": [],
+        "display_name": "new-elyra-pipe",
+        "engine": "Argo",
+        "auth_type": "DEX_STATIC_PASSWORDS",
+        "api_endpoint": KUBEFLOW_PIPELINE_URL,
+        "user_namespace": KUBEFLOW_NAMESPACE,
+        "api_username": KUBEFLOW_USERNAME,
+        "api_password": KUBEFLOW_USER_PASSWORD,
+        "cos_auth_type": "USER_CREDENTIALS",
+        "cos_endpoint": MINIO_URL,
+        "cos_bucket": MINIO_BUCKET,
+        "cos_username": MINIO_USER_NAME,
+        "cos_password": MINIO_PASSWORD,
+        "runtime_type": "KUBEFLOW_PIPELINES"
+    },
+    "schema_name": "kfp",
+    "resource": "new-elyra-pipe.json"
+}
