@@ -33,9 +33,9 @@
             "label": "Preprocess",
             "ui_data": {
               "label": "Preprocess",
-              "image": "/static/elyra/notebook.svg",
+              "image": "/notebook/kubeflow-user-example-com/ml-lab/static/elyra/notebook.svg",
               "x_pos": 127,
-              "y_pos": 114,
+              "y_pos": 95,
               "description": "Run notebook file"
             }
           },
@@ -92,7 +92,7 @@
             "label": "Train",
             "ui_data": {
               "label": "Train",
-              "image": "/static/elyra/notebook.svg",
+              "image": "/notebook/kubeflow-user-example-com/ml-lab/static/elyra/notebook.svg",
               "x_pos": 137,
               "y_pos": 230,
               "description": "Run notebook file"
@@ -156,9 +156,9 @@
             "label": "Evaluate",
             "ui_data": {
               "label": "Evaluate",
-              "image": "/static/elyra/notebook.svg",
-              "x_pos": 138,
-              "y_pos": 352,
+              "image": "/notebook/kubeflow-user-example-com/ml-lab/static/elyra/notebook.svg",
+              "x_pos": 137,
+              "y_pos": 353,
               "description": "Run notebook file"
             }
           },
