@@ -8,7 +8,6 @@
         "auth_type": "DEX_STATIC_PASSWORDS",
         "api_endpoint": KUBEFLOW_PIPELINE_URL,
         "user_namespace": KUBEFLOW_NAMESPACE,
-        "api_username": KUBEFLOW_USERNAME,
         "api_password": KUBEFLOW_USER_PASSWORD,
         "cos_auth_type": "USER_CREDENTIALS",
         "cos_endpoint": MINIO_URL,
