@@ -16,7 +16,8 @@
             "component_parameters": {
               "filename": "minio-logs-data-processing.ipynb",
               "outputs": [
-                "processed_data.npz"
+                "processed_train_data.npz",
+                "processed_test_data.npz"
               ],
               "env_vars": [],
               "kubernetes_secrets": [],
@@ -32,7 +33,7 @@
             "label": "Preprocess",
             "ui_data": {
               "label": "Preprocess",
-              "image": "/notebook/kubeflow-user-example-com/ml-lab/static/elyra/notebook.svg",
+              "image": "/static/elyra/notebook.svg",
               "x_pos": 127,
               "y_pos": 114,
               "description": "Run notebook file"
@@ -91,9 +92,9 @@
             "label": "Train",
             "ui_data": {
               "label": "Train",
-              "image": "/notebook/kubeflow-user-example-com/ml-lab/static/elyra/notebook.svg",
-              "x_pos": 461,
-              "y_pos": 158,
+              "image": "/static/elyra/notebook.svg",
+              "x_pos": 137,
+              "y_pos": 230,
               "description": "Run notebook file"
             }
           },
@@ -113,6 +114,70 @@
                 {
                   "id": "2c34719f-19d6-45c8-8158-8be40b0f23a1",
                   "node_id_ref": "a78be276-6670-4fdd-a4c6-04a701ac1518",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "361480b2-2ff1-49f2-be1c-a334344f1f12",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "filename": "minio-evaluate-model.ipynb",
+              "outputs": [],
+              "env_vars": [],
+              "kubernetes_secrets": [],
+              "kubernetes_tolerations": [],
+              "kubernetes_pod_annotations": [],
+              "dependencies": [
+                "requirements.txt"
+              ],
+              "include_subdirectories": false,
+              "mounted_volumes": [],
+              "runtime_image": "tensorflow/tensorflow:2.8.0"
+            },
+            "label": "Evaluate",
+            "ui_data": {
+              "label": "Evaluate",
+              "image": "/static/elyra/notebook.svg",
+              "x_pos": 138,
+              "y_pos": 352,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "ddbd5a85-64c4-4685-931e-eaa21e0c3cee",
+                  "node_id_ref": "514c364f-79b9-4fb0-8179-94fdb9c0752f",
                   "port_id_ref": "outPort"
                 }
               ]
