@@ -93,7 +93,7 @@
             "ui_data": {
               "label": "Train",
               "image": "/notebook/kubeflow-user-example-com/ml-lab/static/elyra/notebook.svg",
-              "x_pos": 137,
+              "x_pos": 136,
               "y_pos": 230,
               "description": "Run notebook file"
             }
@@ -206,6 +206,9 @@
         "version": 7,
         "runtime_type": "KUBEFLOW_PIPELINES",
         "properties": {
+          "pipeline_defaults": {
+            "runtime_image": "tensorflow/tensorflow:2.8.0"
+          },
           "name": "NeuralLog-trainer",
           "runtime": "Kubeflow Pipelines"
         }
