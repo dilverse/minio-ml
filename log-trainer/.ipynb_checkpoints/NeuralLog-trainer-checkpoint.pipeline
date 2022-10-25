@@ -14,26 +14,27 @@
           "op": "execute-notebook-node",
           "app_data": {
             "component_parameters": {
-              "filename": "minio-logs-data-processing.ipynb",
+              "dependencies": [
+                "requirements.txt"
+              ],
+              "include_subdirectories": false,
               "outputs": [
                 "processed_train_data.npz",
                 "processed_test_data.npz"
               ],
               "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
               "kubernetes_secrets": [],
               "kubernetes_tolerations": [],
-              "kubernetes_pod_annotations": [],
-              "dependencies": [
-                "requirements.txt"
-              ],
-              "include_subdirectories": false,
               "mounted_volumes": [],
+              "filename": "minio-logs-data-processing.ipynb",
               "runtime_image": "tensorflow/tensorflow:2.8.0"
             },
             "label": "Preprocess",
             "ui_data": {
               "label": "Preprocess",
-              "image": "/notebook/kubeflow-user-example-com/ml-lab/static/elyra/notebook.svg",
+              "image": "/notebook/kubeflow-user-example-com/elyra-nb/static/elyra/notebook.svg",
               "x_pos": 127,
               "y_pos": 95,
               "description": "Run notebook file"
@@ -74,25 +75,26 @@
           "op": "execute-notebook-node",
           "app_data": {
             "component_parameters": {
-              "filename": "minio-train-model.ipynb",
-              "outputs": [
-                "bert_hdfs_weights.hdf5"
-              ],
-              "env_vars": [],
-              "kubernetes_secrets": [],
-              "kubernetes_tolerations": [],
-              "kubernetes_pod_annotations": [],
               "dependencies": [
                 "requirements.txt"
               ],
               "include_subdirectories": false,
+              "outputs": [
+                "bert_hdfs_weights.hdf5"
+              ],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_tolerations": [],
               "mounted_volumes": [],
+              "filename": "minio-train-model.ipynb",
               "runtime_image": "tensorflow/tensorflow:2.8.0"
             },
             "label": "Train",
             "ui_data": {
               "label": "Train",
-              "image": "/notebook/kubeflow-user-example-com/ml-lab/static/elyra/notebook.svg",
+              "image": "/notebook/kubeflow-user-example-com/elyra-nb/static/elyra/notebook.svg",
               "x_pos": 136,
               "y_pos": 230,
               "description": "Run notebook file"
@@ -156,7 +158,7 @@
             "label": "Evaluate",
             "ui_data": {
               "label": "Evaluate",
-              "image": "/notebook/kubeflow-user-example-com/ml-lab/static/elyra/notebook.svg",
+              "image": "/notebook/kubeflow-user-example-com/elyra-nb/static/elyra/notebook.svg",
               "x_pos": 137,
               "y_pos": 353,
               "description": "Run notebook file"
@@ -207,6 +209,48 @@
         "runtime_type": "KUBEFLOW_PIPELINES",
         "properties": {
           "pipeline_defaults": {
+            "kubernetes_tolerations": [],
+            "kubernetes_pod_labels": [],
+            "mounted_volumes": [],
+            "kubernetes_pod_annotations": [],
+            "kubernetes_secrets": [
+              {
+                "env_var": "AWS_ACCESS_KEY_ID",
+                "name": "elyra-pipeline-credentials",
+                "key": "AWS_ACCESS_KEY_ID"
+              },
+              {
+                "env_var": "AWS_SECRET_ACCESS_KEY",
+                "name": "elyra-pipeline-credentials",
+                "key": "AWS_SECRET_ACCESS_KEY"
+              },
+              {
+                "env_var": "AWS_REGION",
+                "name": "elyra-pipeline-credentials",
+                "key": "AWS_REGION"
+              },
+              {
+                "env_var": "S3_ENDPOINT",
+                "name": "elyra-pipeline-credentials",
+                "key": "S3_ENDPOINT"
+              },
+              {
+                "env_var": "S3_USE_HTTPS",
+                "name": "elyra-pipeline-credentials",
+                "key": "S3_USE_HTTPS"
+              },
+              {
+                "env_var": "S3_VERIFY_SSL",
+                "name": "elyra-pipeline-credentials",
+                "key": "S3_VERIFY_SSL"
+              }
+            ],
+            "env_vars": [
+              {
+                "env_var": "COS_BUCKET",
+                "value": "ml-data"
+              }
+            ],
             "runtime_image": "tensorflow/tensorflow:2.8.0"
           },
           "name": "NeuralLog-trainer",
