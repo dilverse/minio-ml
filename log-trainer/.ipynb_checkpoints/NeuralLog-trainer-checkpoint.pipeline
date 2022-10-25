@@ -16,7 +16,8 @@
             "component_parameters": {
               "filename": "minio-logs-data-processing.ipynb",
               "outputs": [
-                "processed_data.npz"
+                "processed_train_data.npz",
+                "processed_test_data.npz"
               ],
               "env_vars": [],
               "kubernetes_secrets": [],
@@ -34,7 +35,7 @@
               "label": "Preprocess",
               "image": "/notebook/kubeflow-user-example-com/ml-lab/static/elyra/notebook.svg",
               "x_pos": 127,
-              "y_pos": 114,
+              "y_pos": 95,
               "description": "Run notebook file"
             }
           },
@@ -92,8 +93,8 @@
             "ui_data": {
               "label": "Train",
               "image": "/notebook/kubeflow-user-example-com/ml-lab/static/elyra/notebook.svg",
-              "x_pos": 461,
-              "y_pos": 158,
+              "x_pos": 136,
+              "y_pos": 230,
               "description": "Run notebook file"
             }
           },
@@ -132,15 +133,82 @@
               }
             }
           ]
+        },
+        {
+          "id": "361480b2-2ff1-49f2-be1c-a334344f1f12",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "filename": "minio-evaluate-model.ipynb",
+              "outputs": [],
+              "env_vars": [],
+              "kubernetes_secrets": [],
+              "kubernetes_tolerations": [],
+              "kubernetes_pod_annotations": [],
+              "dependencies": [
+                "requirements.txt"
+              ],
+              "include_subdirectories": false,
+              "mounted_volumes": [],
+              "runtime_image": "tensorflow/tensorflow:2.8.0"
+            },
+            "label": "Evaluate",
+            "ui_data": {
+              "label": "Evaluate",
+              "image": "/notebook/kubeflow-user-example-com/ml-lab/static/elyra/notebook.svg",
+              "x_pos": 137,
+              "y_pos": 353,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "ddbd5a85-64c4-4685-931e-eaa21e0c3cee",
+                  "node_id_ref": "514c364f-79b9-4fb0-8179-94fdb9c0752f",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
         }
       ],
       "app_data": {
         "ui_data": {
           "comments": []
         },
-        "version": 7,
+        "version": 8,
         "runtime_type": "KUBEFLOW_PIPELINES",
         "properties": {
+          "pipeline_defaults": {
+            "runtime_image": "tensorflow/tensorflow:2.8.0"
+          },
           "name": "NeuralLog-trainer",
           "runtime": "Kubeflow Pipelines"
         }
