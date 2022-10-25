@@ -247,7 +247,7 @@
             ],
             "env_vars": [
               {
-                "env_var": "COS_BUCKET",
+                "env_var": "BUCKET_NAME",
                 "value": "ml-data"
               }
             ],
