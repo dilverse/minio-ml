@@ -34,9 +34,9 @@
             "label": "Preprocess",
             "ui_data": {
               "label": "Preprocess",
-              "image": "/notebook/kubeflow-user-example-com/elyra-nb/static/elyra/notebook.svg",
+              "image": "/notebook/kubeflow-user-example-com/daniel-lab/static/elyra/notebook.svg",
               "x_pos": 127,
-              "y_pos": 95,
+              "y_pos": 187,
               "description": "Run notebook file"
             }
           },
@@ -94,9 +94,9 @@
             "label": "Train",
             "ui_data": {
               "label": "Train",
-              "image": "/notebook/kubeflow-user-example-com/elyra-nb/static/elyra/notebook.svg",
-              "x_pos": 136,
-              "y_pos": 230,
+              "image": "/notebook/kubeflow-user-example-com/daniel-lab/static/elyra/notebook.svg",
+              "x_pos": 134,
+              "y_pos": 266,
               "description": "Run notebook file"
             }
           },
@@ -142,25 +142,28 @@
           "op": "execute-notebook-node",
           "app_data": {
             "component_parameters": {
-              "filename": "minio-evaluate-model.ipynb",
-              "outputs": [],
-              "env_vars": [],
-              "kubernetes_secrets": [],
-              "kubernetes_tolerations": [],
-              "kubernetes_pod_annotations": [],
               "dependencies": [
                 "requirements.txt"
               ],
               "include_subdirectories": false,
+              "outputs": [
+                "bert_hdfs_weights.hdf5"
+              ],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_tolerations": [],
               "mounted_volumes": [],
+              "filename": "minio-evaluate-model.ipynb",
               "runtime_image": "tensorflow/tensorflow:2.8.0"
             },
             "label": "Evaluate",
             "ui_data": {
               "label": "Evaluate",
-              "image": "/notebook/kubeflow-user-example-com/elyra-nb/static/elyra/notebook.svg",
-              "x_pos": 137,
-              "y_pos": 353,
+              "image": "/notebook/kubeflow-user-example-com/daniel-lab/static/elyra/notebook.svg",
+              "x_pos": 136,
+              "y_pos": 343,
               "description": "Run notebook file"
             }
           },
@@ -199,6 +202,158 @@
               }
             }
           ]
+        },
+        {
+          "id": "4cf1d9c6-3769-4c81-8e60-d4fe5cd8291b",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [],
+              "include_subdirectories": false,
+              "outputs": [],
+              "env_vars": [
+                {
+                  "env_var": "BUCKET_NAME"
+                },
+                {
+                  "env_var": "S3_ENDPOINT"
+                },
+                {
+                  "env_var": "AWS_ACCESS_KEY_ID"
+                },
+                {
+                  "env_var": "AWS_SECRET_ACCESS_KEY"
+                }
+              ],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "minio-deploy-model.ipynb"
+            },
+            "label": "Deploy",
+            "ui_data": {
+              "label": "Deploy",
+              "image": "/notebook/kubeflow-user-example-com/daniel-lab/static/elyra/notebook.svg",
+              "x_pos": 134,
+              "y_pos": 506,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "def9f56f-81d5-49b4-85b7-ff9d539ddc56",
+                  "node_id_ref": "a2c02854-ce09-4edf-9ed8-ed016bba9096",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "a2c02854-ce09-4edf-9ed8-ed016bba9096",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [
+                "requirements.txt"
+              ],
+              "include_subdirectories": false,
+              "outputs": [],
+              "env_vars": [
+                {
+                  "env_var": "BUCKET_NAME"
+                },
+                {
+                  "env_var": "S3_ENDPOINT"
+                },
+                {
+                  "env_var": "AWS_ACCESS_KEY_ID"
+                },
+                {
+                  "env_var": "AWS_SECRET_ACCESS_KEY"
+                }
+              ],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "minio-prepare-model-deploy.ipynb"
+            },
+            "label": "Prepare-Deploy",
+            "ui_data": {
+              "label": "Prepare-Deploy",
+              "image": "/notebook/kubeflow-user-example-com/daniel-lab/static/elyra/notebook.svg",
+              "x_pos": 133,
+              "y_pos": 425,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "0a10df5d-9032-44a6-83ab-766db4a3a994",
+                  "node_id_ref": "361480b2-2ff1-49f2-be1c-a334344f1f12",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
         }
       ],
       "app_data": {
@@ -209,10 +364,16 @@
         "runtime_type": "KUBEFLOW_PIPELINES",
         "properties": {
           "pipeline_defaults": {
-            "kubernetes_tolerations": [],
+            "kubernetes_pod_annotations": [],
             "kubernetes_pod_labels": [],
             "mounted_volumes": [],
-            "kubernetes_pod_annotations": [],
+            "kubernetes_tolerations": [],
+            "env_vars": [
+              {
+                "env_var": "BUCKET_NAME",
+                "value": "ml-data"
+              }
+            ],
             "kubernetes_secrets": [
               {
                 "env_var": "AWS_ACCESS_KEY_ID",
@@ -243,12 +404,6 @@
                 "env_var": "S3_VERIFY_SSL",
                 "name": "elyra-pipeline-credentials",
                 "key": "S3_VERIFY_SSL"
-              }
-            ],
-            "env_vars": [
-              {
-                "env_var": "BUCKET_NAME",
-                "value": "ml-data"
               }
             ],
             "runtime_image": "tensorflow/tensorflow:2.8.0"
