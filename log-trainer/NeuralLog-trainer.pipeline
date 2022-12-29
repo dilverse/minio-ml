@@ -26,6 +26,7 @@
               "kubernetes_pod_annotations": [],
               "kubernetes_pod_labels": [],
               "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
               "kubernetes_tolerations": [],
               "mounted_volumes": [],
               "filename": "minio-logs-data-processing.ipynb",
@@ -34,7 +35,7 @@
             "label": "Preprocess",
             "ui_data": {
               "label": "Preprocess",
-              "image": "/notebook/kubeflow-user-example-com/daniel-lab/static/elyra/notebook.svg",
+              "image": "/notebook/kubeflow-user-example-com/dil-lab/static/elyra/notebook.svg",
               "x_pos": 127,
               "y_pos": 187,
               "description": "Run notebook file"
@@ -75,6 +76,11 @@
           "op": "execute-notebook-node",
           "app_data": {
             "component_parameters": {
+              "pipeline_parameters": [
+                "epochs",
+                "batch_size",
+                "max_len"
+              ],
               "dependencies": [
                 "requirements.txt"
               ],
@@ -86,6 +92,7 @@
               "kubernetes_pod_annotations": [],
               "kubernetes_pod_labels": [],
               "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
               "kubernetes_tolerations": [],
               "mounted_volumes": [],
               "filename": "minio-train-model.ipynb",
@@ -94,7 +101,7 @@
             "label": "Train",
             "ui_data": {
               "label": "Train",
-              "image": "/notebook/kubeflow-user-example-com/daniel-lab/static/elyra/notebook.svg",
+              "image": "/notebook/kubeflow-user-example-com/dil-lab/static/elyra/notebook.svg",
               "x_pos": 134,
               "y_pos": 266,
               "description": "Run notebook file"
@@ -142,6 +149,11 @@
           "op": "execute-notebook-node",
           "app_data": {
             "component_parameters": {
+              "pipeline_parameters": [
+                "epochs",
+                "batch_size",
+                "max_len"
+              ],
               "dependencies": [
                 "requirements.txt"
               ],
@@ -153,6 +165,7 @@
               "kubernetes_pod_annotations": [],
               "kubernetes_pod_labels": [],
               "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
               "kubernetes_tolerations": [],
               "mounted_volumes": [],
               "filename": "minio-evaluate-model.ipynb",
@@ -161,7 +174,7 @@
             "label": "Evaluate",
             "ui_data": {
               "label": "Evaluate",
-              "image": "/notebook/kubeflow-user-example-com/daniel-lab/static/elyra/notebook.svg",
+              "image": "/notebook/kubeflow-user-example-com/dil-lab/static/elyra/notebook.svg",
               "x_pos": 136,
               "y_pos": 343,
               "description": "Run notebook file"
@@ -236,7 +249,7 @@
             "label": "Deploy",
             "ui_data": {
               "label": "Deploy",
-              "image": "/notebook/kubeflow-user-example-com/daniel-lab/static/elyra/notebook.svg",
+              "image": "/notebook/kubeflow-user-example-com/dil-lab/static/elyra/notebook.svg",
               "x_pos": 134,
               "y_pos": 506,
               "description": "Run notebook file"
@@ -313,7 +326,7 @@
             "label": "Prepare-Deploy",
             "ui_data": {
               "label": "Prepare-Deploy",
-              "image": "/notebook/kubeflow-user-example-com/daniel-lab/static/elyra/notebook.svg",
+              "image": "/notebook/kubeflow-user-example-com/dil-lab/static/elyra/notebook.svg",
               "x_pos": 133,
               "y_pos": 425,
               "description": "Run notebook file"
@@ -365,9 +378,10 @@
         "properties": {
           "pipeline_defaults": {
             "kubernetes_pod_annotations": [],
-            "kubernetes_pod_labels": [],
-            "mounted_volumes": [],
             "kubernetes_tolerations": [],
+            "kubernetes_shared_mem_size": {},
+            "mounted_volumes": [],
+            "kubernetes_pod_labels": [],
             "env_vars": [
               {
                 "env_var": "BUCKET_NAME",
@@ -409,7 +423,36 @@
             "runtime_image": "tensorflow/tensorflow:2.8.0"
           },
           "name": "NeuralLog-trainer",
-          "runtime": "Kubeflow Pipelines"
+          "runtime": "Kubeflow Pipelines",
+          "pipeline_parameters": [
+            {
+              "name": "epochs",
+              "description": "Number of epochs to train on",
+              "default_value": {
+                "type": "Integer",
+                "value": 10
+              },
+              "required": false
+            },
+            {
+              "name": "batch_size",
+              "description": "Training Batch Size",
+              "default_value": {
+                "type": "Integer",
+                "value": 64
+              },
+              "required": false
+            },
+            {
+              "name": "max_len",
+              "description": "Maximum Length",
+              "default_value": {
+                "type": "Integer",
+                "value": 75
+              },
+              "required": false
+            }
+          ]
         }
       },
       "runtime_ref": ""
